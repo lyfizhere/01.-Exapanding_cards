@@ -1,16 +1,61 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Muli", sans-serif;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
   overflow: hidden;
   margin: 0;
+}
+
+.container {
+  display: flex;
+  width: 90vw;
+}
+
+.panel {
+  background-size: cover; /* this will fit the background to cover fit, unlike the auto 100%, which will be shown like tiles */
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer; /* whenever we hover the panel images the cursor will become a pointer */
+  flex: 0.5; /* since we are using display flex, we can set the width of each panel to fix width of 0.5, they all become even. But for the active class this would be changed to 5 via javascript code. */
+  margin: 10px; /* this will separate the panels from each other */
+  position: relative; /* panel has to be relative to the conatiner */
+  transition: flex 0.7s ease-in;
+}
+
+.panel h3 {
+  font-size: 24px;
+  position: absolute; /*  */
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
+}
+
+.panel.active {
+  flex: 5;
+}
+
+.panel.active h3 {
+  opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 100vw;
+  }
+  .panel:nth-of-type(4), /* because there are 5 same type of panels in our html code, so here we selected 4 and 5. */
+  .panel:nth-of-type(5) {
+    display: none;
+  }
 }
